@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>
+        {% block title %}
+        {% endblock title %}
+    </title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    {% include 'snippets/styles_admin.html' %}
+
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+
+        {% include 'snippets/header_admin.html' %}
+
+        {% include 'snippets/sidebar_admin.html' %}
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    {% block header1 %}
+                    {% endblock header1 %}
+                    <small>Control panel</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                    <li class="active">
+                        {% block header2 %}
+                        {% endblock header2 %}
+                    </li>
+                </ol>
+            </section>
+
+            {% block content %}
+            {% endblock content %}
+
+            <!-- /.content -->
+        </div>
+
+        {% include 'snippets/footer_admin.html' %}
+
+    </div>
+    <!-- ./wrapper -->
+
+    {% include 'snippets/scripts_admin.html' %}
+</body>
+
+</html>

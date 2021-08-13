@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    {% include 'snippets/styles_login.html' %}
+    <title>{{title}}</title>
+</head>
+
+<body>
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+            <!-- Tabs Titles -->
+
+            <!-- Icon -->
+            <div class="fadeIn first">
+                <!--<img src="{% static 'img/Logo.png' %}" id="icon" alt="User Icon" />-->
+                <br>
+                <h2 style="color: black;">REGISTER ACCOUNT</h2>
+            </div>
+            <!-- Login Form -->
+            <form method="POST">
+                {% csrf_token %}
+                {{form.username}}
+                {{form.email}}
+                {{form.password1}}
+                {{form.password2}}
+
+                <input type="submit" class="fadeIn fourth" value="Register">
+                <div class="container">
+                    <p>{{form.errors}}</p>
+                </div>
+            </form>
+
+            <!-- Remind Passowrd -->
+            <div id="formFooter">
+                <p>Already Have Account? <a class="underlineHover" href="{% url 'login' %}">Login</a></p>
+            </div>
+
+        </div>
+    </div>
+
+    {% include 'snippets/scripts_login.html' %}
+</body>
+
+</html>

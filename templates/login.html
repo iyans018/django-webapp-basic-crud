@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    {% include 'snippets/styles_login.html' %}
+    <title>{{title}}</title>
+</head>
+
+<body>
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+            <!-- Tabs Titles -->
+
+            <!-- Icon -->
+            <div class="fadeIn first">
+                <!--<img src="{% static 'img/Logo.png' %}" id="icon" alt="User Icon" />-->
+                <br>
+                <h2 style="color: black;">LOGIN</h2>
+            </div>
+            <!-- Login Form -->
+            <form method="POST">
+                {% csrf_token %}
+                <input type="text" id="login" class="fadeIn second" name="username" placeholder="Username">
+                <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password">
+                <input type="submit" class="fadeIn fourth" value="Log In">
+
+                {% for message in messages %}
+                <p style="color: red;">{{message}}</p>
+                {% endfor %}
+            </form>
+
+            <!-- Remind Passowrd -->
+            <div id="formFooter">
+                <p>Don't have account? <a class="underlineHover" href="{% url 'register' %}">Sign Up</a></p>
+            </div>
+
+        </div>
+    </div>
+
+    {% include 'snippets/scripts_login.html' %}
+</body>
+
+</html>
